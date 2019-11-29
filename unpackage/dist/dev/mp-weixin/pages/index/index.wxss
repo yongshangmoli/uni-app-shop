@@ -1,0 +1,138 @@
+
+.center {
+	text-align: center;
+}
+.content {
+	/* display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center; */
+	font-size: 26rpx;
+}
+.header-wrapper {
+	height: 340rpx;
+	background: #ff845e;
+	width: 100%;
+	color: #fff;
+	position: relative;
+}
+.shop {
+	padding: 16rpx 40rpx;
+	display: block;
+}
+.list {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 85%;
+	width: 100%;
+	position: absolute;
+	top: 15%;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	text-align: center;
+}
+.list-item {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+}
+.list-item .icon {
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 8rpx;
+}
+.list-item .text {
+	font-size: 26rpx;
+	padding-top: 16rpx;
+}
+.list-item .append {
+	font-size: 20rpx;
+	padding-top: 8rpx;
+}
+.swiper-wrapper {
+	display: block;
+	height: 150px;
+	width: 95%;
+	border-radius: 16rpx;
+	margin: 0 auto;
+	position: relative;
+}
+.swiper-item {
+	width: 750rpx;
+	height: 100%;
+}
+.recommand-wrapper, .select-wrapper {
+	width: 95%;
+	margin: 0 auto;
+	position: relative;
+}
+.section-title {
+	font-weight: bold;
+	font-size: 32rpx;
+}
+.scroll-wrapper {
+	/* height:110px; */
+	white-space: nowrap;
+	padding: 10rpx 0;
+}
+.recommend-item {
+	display: inline-block;
+	width: 280rpx;
+	text-align: center;
+	position: relative;
+}
+.recommend-item .icon {
+	width: 180rpx;
+	height: 180rpx;
+	border-radius: 50%;
+}
+.recommend-item .text {
+	font-size: 26rpx;
+	padding-top: 16rpx;
+}
+.recommend-item .append {
+	font-size: 20rpx;
+	color: #888;
+	padding: 8rpx 0;
+}
+.recommend-item .discount-price {
+	color: #ff845e;
+	padding-top: 20rpx;
+}
+.recommend-item .origin-price {
+	color: #888;
+	font-size: 20rpx;
+	text-decoration: line-through;
+}
+.select-item {
+	width: 350rpx !important;
+}
+.cart-icon-wrapper {
+	position: fixed;
+	bottom: 20rpx;
+	left: 20rpx;
+	width: 80rpx;
+	height: 80rpx;
+}
+.cart-icon {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.item-cart-wrapper {
+	width: 40rpx;
+	height: 40rpx;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.item-cart {
+	width: 100%;
+	height: 100%;
+}
+

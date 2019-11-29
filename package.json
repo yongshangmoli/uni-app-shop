@@ -1,0 +1,17 @@
+{
+  "name": "hello-world",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {},
+  "browserslist": [
+    "Android >= 4",
+    "ios >= 8"
+  ],
+  "uni-app": {
+    "scripts": {}
+  }
+}
