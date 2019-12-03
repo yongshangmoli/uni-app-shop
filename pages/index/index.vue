@@ -25,7 +25,7 @@
 				<view class="discount-price">¥{{item.discountPrice}}</view>
 				<view class="origin-price">¥{{item.originalPrice}}</view>
 				<view class="item-cart-wrapper" @click="shoppingHandler(item)">
-					<image class="item-cart" src="../../static/icon/shopping.png" mode="contain"></image>
+					<image class="item-cart" :src="shoppingIcon" mode="aspectFit"></image>
 				</view>
 			  </view>
 			</scroll-view>
@@ -40,13 +40,14 @@
 					<view class="discount-price">¥{{item.discountPrice}}</view>
 					<view class="origin-price">¥{{item.originalPrice}}</view>
 					<view class="item-cart-wrapper" @click="shoppingHandler(item)">
-						<image class="item-cart" src="../../static/icon/shopping.png" mode="contain"></image>
+						<image class="item-cart" :src="shoppingIcon" mode="aspectFit"></image>
 					</view>
 				</view>
 			</view>
 		</view>
 		<view class="cart-icon-wrapper" @click="viewCart">
-			<image class="cart-icon" src="../../static/icon/shopping.png" mode="contain"></image>
+			<view class="cart-quantity">{{quantityCount}}</view>
+			<image class="cart-icon" :src="shoppingIcon" mode="aspectFit"></image>
 		</view>
 	</view>
 </template>
@@ -58,9 +59,12 @@
 	const bannerIconUrl = 'https://source.unsplash.com/random/100x100'
 	const swiperImgUrl = 'https://source.unsplash.com/random/750x260'
 	const scrollImgUrl = 'https://source.unsplash.com/random/300x300'
+	
 	export default {
 		data() {
 			return {
+				shoppingIcon: 'http://pic.51yuansu.com/pic2/cover/00/41/50/581357ed765f7_610.jpg',
+				quantityCount: 0,
 				shopName: '缤纷年华',
 				bannerMenu: [
 					{
@@ -126,17 +130,39 @@
 			console.log(_.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0))
 			// console.log(11111, this.$minApi.get)
 		},
-		computed: mapState({
-			productListIncart: state => state.cart.productList,
-			productListMapIncart: state => state.cart.productMap
-		}),
+		computed: {
+			...mapState({
+				productListIncart: state => state.cart.productList,
+				productListMapIncart: state => state.cart.productMap
+			})
+		},
 		methods: {
+			productQuantity () {
+				let keys = Object.keys(this.productListMapIncart)
+				let count = 0
+				keys.map(v => {
+					let ct = this.productListMapIncart[v]
+					if (ct) {
+						count += ct
+					}
+				})
+				// console.log(22222, count)
+				return count
+			},
 			shoppingHandler (item) {
 				console.log('加入购物车：', item)
-				this.$store.dispatch('cart/addProducts', item)
+				this.$store.dispatch('cart/addProducts', {
+					product: item,
+					cb: () => {
+						this.quantityCount = this.productQuantity()
+					}
+				})
 			},
 			viewCart () {
 				console.log('购物车里商品状况', this.productListIncart, this.productListMapIncart)
+				uni.navigateTo({
+					url: '../detail/index'
+				})
 			}
 		}
 	}
@@ -258,6 +284,12 @@
 		width: 100%;
 		height: 100%;
 		border-radius: 50%;
+	}
+	.cart-quantity {
+		position: absolute;
+		right: 0;
+		top: 0rpx;
+		color: #ff845e;
 	}
 	.item-cart-wrapper {
 		width: 40rpx;

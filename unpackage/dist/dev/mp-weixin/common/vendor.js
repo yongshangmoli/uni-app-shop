@@ -8415,7 +8415,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/order/index": { "navigationBarTitleText": "订单" }, "pages/me/index": { "navigationBarTitleText": "我的" }, "pages/detail/index": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": {} }, "pages/order/index": { "navigationBarTitleText": "订单", "usingComponents": {} }, "pages/me/index": { "navigationBarTitleText": "我的", "usingComponents": {} }, "pages/detail/index": { "navigationBarTitleText": "购物车", "usingComponents": {} }, "pages/auth/auth_mp": { "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -9557,19 +9557,21 @@ var mutations = {
 
 
 var actions = {
-  addProducts: function () {var _addProducts = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref, products) {var commit, state, ret;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:commit = _ref.commit, state = _ref.state;_context.prev = 1;_context.next = 4;return (
+  addProducts: function () {var _addProducts = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref, data) {var commit, state, ret, cb;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:commit = _ref.commit, state = _ref.state;_context.prev = 1;_context.next = 4;return (
 
-                _api.default.addCart({}, {
+                _api.default.addCart(data.product, {
                   successTitle: '加入购物车成功',
                   failTitle: '加入购物车失败' }));case 4:ret = _context.sent;
 
-              // console.log(22222, ret)
-              commit('ADD_PRODUCT', products);_context.next = 12;break;case 8:_context.prev = 8;_context.t0 = _context["catch"](1);
+              cb = data.cb;
+              // console.log(333333333, data, cb)
+              commit('ADD_PRODUCT', data.product);
+              cb && cb();_context.next = 14;break;case 10:_context.prev = 10;_context.t0 = _context["catch"](1);
 
               console.log(_context.t0);
               uni.showToast({
                 title: '加购失败',
-                duration: 2000 });case 12:case "end":return _context.stop();}}}, _callee, this, [[1, 8]]);}));function addProducts(_x, _x2) {return _addProducts.apply(this, arguments);}return addProducts;}() };var _default =
+                duration: 2000 });case 14:case "end":return _context.stop();}}}, _callee, this, [[1, 10]]);}));function addProducts(_x, _x2) {return _addProducts.apply(this, arguments);}return addProducts;}() };var _default =
 
 
 
@@ -12299,10 +12301,6 @@ var myRequest = new _requestHelper.default();var _default =
 
 {
   addCart: function addCart(data) {var loading = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    // return myRequest.post({
-    // 	url: 'addCart',
-    // 	data
-    // }, loading)
     return myRequest.post('addCart', data, {}, loading);
   } };exports.default = _default;
 

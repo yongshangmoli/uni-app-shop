@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/auth/auth_mp",
     "pages/index/index",
     "pages/order/index",
     "pages/me/index",
@@ -36,6 +37,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap39.json"
+  "usingComponents": {}
 }

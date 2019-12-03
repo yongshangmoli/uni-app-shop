@@ -122,7 +122,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
 
 
 
@@ -177,60 +178,63 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 var _underscore = _interopRequireDefault(__webpack_require__(/*! underscore */ 24));
-var _vuex = __webpack_require__(/*! vuex */ 16);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var bannerIconUrl = 'https://source.unsplash.com/random/100x100';var swiperImgUrl = 'https://source.unsplash.com/random/750x260';var scrollImgUrl = 'https://source.unsplash.com/random/300x300';var _default = { data: function data() {return { shopName: '缤纷年华', bannerMenu: [{ imgUrl: bannerIconUrl, text: '会员码', append: '快捷识别会员' }, { imgUrl: bannerIconUrl, text: '优惠券', append: '0' }, { imgUrl: bannerIconUrl, text: '钱包·重置', append: '10' }], swiperImgs: Array.from({ length: 3 }).fill(swiperImgUrl), recommendList: [{ id: 1, imgUrl: scrollImgUrl, text: '进口香蕉', append: '1份/400-500g', discountPrice: '3.98', originalPrice: '4.00' }, { id: 2, imgUrl: scrollImgUrl, text: '水晶红富士', append: '1份/400-500g', discountPrice: '4.50', originalPrice: '6.00' }, { id: 3, imgUrl: scrollImgUrl, text: '泰国椰青', append: '1个', discountPrice: '1.08', originalPrice: '1.10' }, { id: 4, imgUrl: scrollImgUrl, text: '美国樱桃',
+var _vuex = __webpack_require__(/*! vuex */ 16);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+
+var bannerIconUrl = 'https://source.unsplash.com/random/100x100';
+var swiperImgUrl = 'https://source.unsplash.com/random/750x260';
+var scrollImgUrl = 'https://source.unsplash.com/random/300x300';var _default =
+
+{
+  data: function data() {
+    return {
+      shoppingIcon: 'http://pic.51yuansu.com/pic2/cover/00/41/50/581357ed765f7_610.jpg',
+      quantityCount: 0,
+      shopName: '缤纷年华',
+      bannerMenu: [
+      {
+        imgUrl: bannerIconUrl,
+        text: '会员码',
+        append: '快捷识别会员' },
+      {
+        imgUrl: bannerIconUrl,
+        text: '优惠券',
+        append: '0' },
+      {
+        imgUrl: bannerIconUrl,
+        text: '钱包·重置',
+        append: '10' }],
+
+
+      swiperImgs: Array.from({ length: 3 }).fill(swiperImgUrl),
+      recommendList: [
+      {
+        id: 1,
+        imgUrl: scrollImgUrl,
+        text: '进口香蕉',
+        append: '1份/400-500g',
+        discountPrice: '3.98',
+        originalPrice: '4.00' },
+
+      {
+        id: 2,
+        imgUrl: scrollImgUrl,
+        text: '水晶红富士',
+        append: '1份/400-500g',
+        discountPrice: '4.50',
+        originalPrice: '6.00' },
+
+      {
+        id: 3,
+        imgUrl: scrollImgUrl,
+        text: '泰国椰青',
+        append: '1个',
+        discountPrice: '1.08',
+        originalPrice: '1.10' },
+
+      {
+        id: 4,
+        imgUrl: scrollImgUrl,
+        text: '美国樱桃',
         append: '1份/250g',
         discountPrice: '49.88',
         originalPrice: '50.00' },
@@ -250,18 +254,41 @@ var bannerIconUrl = 'https://source.unsplash.com/random/100x100';var swiperImgUr
     console.log(_underscore.default.reduce([1, 2, 3], function (memo, num) {return memo + num;}, 0));
     // console.log(11111, this.$minApi.get)
   },
-  computed: (0, _vuex.mapState)({
+  computed: _objectSpread({},
+  (0, _vuex.mapState)({
     productListIncart: function productListIncart(state) {return state.cart.productList;},
-    productListMapIncart: function productListMapIncart(state) {return state.cart.productMap;} }),
+    productListMapIncart: function productListMapIncart(state) {return state.cart.productMap;} })),
+
 
   methods: {
-    shoppingHandler: function shoppingHandler(item) {
+    productQuantity: function productQuantity() {var _this = this;
+      var keys = Object.keys(this.productListMapIncart);
+      var count = 0;
+      keys.map(function (v) {
+        var ct = _this.productListMapIncart[v];
+        if (ct) {
+          count += ct;
+        }
+      });
+      // console.log(22222, count)
+      return count;
+    },
+    shoppingHandler: function shoppingHandler(item) {var _this2 = this;
       console.log('加入购物车：', item);
-      this.$store.dispatch('cart/addProducts', item);
+      this.$store.dispatch('cart/addProducts', {
+        product: item,
+        cb: function cb() {
+          _this2.quantityCount = _this2.productQuantity();
+        } });
+
     },
     viewCart: function viewCart() {
       console.log('购物车里商品状况', this.productListIncart, this.productListMapIncart);
+      uni.navigateTo({
+        url: '../detail/index' });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

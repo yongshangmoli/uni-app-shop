@@ -13,3 +13,7 @@ const app = new Vue({
     ...App
 })
 app.$mount()
+Vue.prototype.globalData = getApp().globalData
+
+console.log(999, getApp())
+

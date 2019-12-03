@@ -1,0 +1,1 @@
+<view class="content"><view style="padding:35px;"><button data-event-opts="{{[['tap',[['goToIndexPage',['$event']]]]]}}" style="margin-top:50px;" onTap="__e">手机号码登录</button></view></view>

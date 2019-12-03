@@ -23,6 +23,9 @@ var app = new _vue.default(_objectSpread({
 _App.default));
 
 createApp(app).$mount();
+_vue.default.prototype.globalData = getApp().globalData;
+
+console.log(999, getApp());
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 
 /***/ }),

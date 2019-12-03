@@ -1,30 +1,47 @@
 <template>
 	<view class="content">
-		<view style="padding:35px;">
-			<!-- #ifdef MP-WEIXIN -->
-			<button type="primary" open-type="getUserInfo" @getuserinfo="getuserinfo" withCredentials="true">微信2登录</button>
-			<!-- #endif -->
-			<!-- #ifdef APP-PLUS -->
-			<button type="primary" open-type="getUserInfo" @click="getuserinfoh5appwx" withCredentials="true">微信1登录</button>
-			<!-- #endif -->
-			<!-- #ifdef H5 -->
-			<button type="primary" @click="wxAuth">测试跳转</button>
-			<!-- #endif -->
-			<button style="margin-top:50px;"  @click="goToIndexPage">手机号码登录</button>
+		<!-- #ifdef MP-WEIXIN || MP-ALIPAY -->
+		<view class="header">
+			<view class="user">
+				<image class="user-icon" :src="userInfo.avatarUrl || defaultIcon" mode="aspectFit"></image>
+				<view class="name">{{userInfo.nickName || '神秘人'}}</view>
+			</view>
+			<view class="module">
+				<view class="item" v-for="(item, idx) in moduleList" :key="idx">
+					<view class="text">{{item.text}}</view>
+					<view class="append">{{item.append}}</view>
+				</view>
+			</view>
 		</view>
+		<!-- #endif -->
 	</view>
 </template>
 
 <script>
-	import _ from 'underscore'
+	// import _ from 'underscore'
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				defaultIcon: 'https://s.beta.gtimg.com/hospital_img/pay-assist/static/default.jpg',
+				title: 'Hello',
+				userInfo: {},
+				moduleList: [
+					{
+						text: '1859',
+						append: '积分商城'
+					}, {
+						text: '2',
+						append: '优惠券'
+					}, {
+						text: '84.07',
+						append: '钱包·充值'
+					}
+				]
 			}
 		},
 		onLoad() {
-			console.log(_.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0))
+			this.userInfo = JSON.parse(uni.getStorageSync('userInfo') || '{}')
+			// console.log(1111111, )
 		},
 		methods: {
 			async goToIndexPage() {
@@ -65,23 +82,41 @@
 		align-items: center;
 		justify-content: center;
 	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
+	.header {
+		height: 340rpx;
+		background: #ff845e;
+		width: 100%;
+		color: #fff;
+		position: relative;
 	}
-
-	.text-area {
+	.user-icon {
+		width: 110rpx;
+		height: 110rpx;
+		border-radius: 50%;
+		margin-left: 60rpx
+	}
+	.module {
 		display: flex;
-		justify-content: center;
 	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.item {
+		flex: 1;
+		text-align: center;
+	}
+	.item .text {
+		font-size: 34rpx;
+		padding-top: 16rpx;
+	}
+	.item .append {
+		font-size: 20rpx;
+		padding-top: 8rpx;
+	}
+	.user {
+		height: 160rpx;
+		display: flex;
+		align-content: center;
+		align-items: center;
+	}
+	.user .name {
+		margin-left: 30rpx;
 	}
 </style>

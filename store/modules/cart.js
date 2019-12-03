@@ -34,14 +34,16 @@ let mutations = {
 }
 
 let actions = {
-	async addProducts({ commit, state }, products) {
+	async addProducts({ commit, state }, data) {
 		try {
-			let ret = await api.addCart({}, {
+			let ret = await api.addCart(data.product, {
 				successTitle: '加入购物车成功',
 				failTitle: '加入购物车失败'
 			})
-			// console.log(22222, ret)
-			commit('ADD_PRODUCT', products)
+			let cb = data.cb
+			// console.log(333333333, data, cb)
+			commit('ADD_PRODUCT', data.product)
+			cb && cb()
 		} catch (e) {
 			console.log(e)
 			uni.showToast({
